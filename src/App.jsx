@@ -1,26 +1,16 @@
-import { useState } from "react";
 import "./App.css";
-import FacebookLogin from "react-facebook-login";
+
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Privacy from "./Privacy";
 
 function App() {
-  const [state, setState] = useState("");
-  const responseFacebook = async (response) => {
-    console.log(response);
-    setState(JSON.stringify(response));
-  };
   return (
-    <div className="App">
-      <h1>React fb login</h1>
-      <div className="card">
-        <FacebookLogin
-          appId="1127752897940428"
-          autoLoad={true}
-          fields="name,email,picture"
-          // onClick={componentClicked}
-          callback={responseFacebook}
-        />
-      </div>
-      <pre>{state}</pre>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/privacy" element={<Privacy />} />
+      </Routes>
     </div>
   );
 }
