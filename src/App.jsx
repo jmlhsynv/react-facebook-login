@@ -1,9 +1,12 @@
+import { useState } from "react";
 import "./App.css";
 import FacebookLogin from "react-facebook-login";
 
 function App() {
+  const [state, setState] = useState("");
   const responseFacebook = async (response) => {
     console.log(response);
+    setState(JSON.stringify(response));
   };
   return (
     <div className="App">
@@ -17,6 +20,7 @@ function App() {
           callback={responseFacebook}
         />
       </div>
+      <pre>{state}</pre>
     </div>
   );
 }
